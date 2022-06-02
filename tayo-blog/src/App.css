@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid red;
+  padding-bottom: 15px;
+}
+
+.nav-title h1 {
+  font-family: 'Chelsea Market', cursive;
+  font-size: 2.8rem;
+  font-weight: 400;
+}
+.nav-title span {
+  color: red;
+  font-weight: 800;
+}
+
+.nav-links {
+  text-decoration: none;
+  margin-left: 50px;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.blog-container,
+.post-container {
+  width: 60%;
+  margin: 0 auto;
+}
+.blog-body {
+  margin-bottom: 35px;
+  /* border-bottom: 1px solid #000; */
+}
+
+.blog-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.blog-header h2 {
+  font-family: 'Roboto', sans-serif;
+  color: lightblue;
+  margin-bottom: 10px;
+}
+
+.blog-body p {
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.blog-body .read-more {
+  color: blue;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.post-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-container h3 {
+  font-family: 'Chelsea Market', cursive;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: tomato;
+}
+.post-container input,
+textarea {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.post-container input:hover,
+textarea:hover {
+  border-color: lightblue;
+}
+
+.post-container input {
+  padding: 13px;
+}
+.post-container textarea {
+  resize: none;
+  padding: 12px 20px;
+}
+
+.post-container .post-btn {
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: lightblue;
+  color: tomato;
+  border: 1px solid lightblue;
+  transition: all 0.6s;
+  padding: 10px;
+  border: 4px;
+  margin-bottom: 10px;
+}
+
+.post-container .post-btn:hover {
+  color: lightblue;
+  background-color: tomato;
+  border: 1px solid tomato;
+  cursor: pointer;
+}
