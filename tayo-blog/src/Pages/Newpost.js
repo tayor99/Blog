@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export const Newpost = () => {
@@ -8,20 +8,17 @@ export const Newpost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const postContent = async () => {
-    // axios.post(
-    //   'https://blogpostapi1.herokuapp.com/blog_post__post',
-    //   {},
-    //   {
-    //     params: {
-    //       name,
-    //       title,
-    //       content,
-    //     },
-    //   }
-    // );
+
+    axios.post(
+      'https://blogpostapi1.herokuapp.com/',
+
+      {
+        name,
+        title,
+        content,
+      }
+    );
   };
-  // postContent();
 
   return (
     <div className="post-container">
@@ -32,6 +29,7 @@ export const Newpost = () => {
           className="post-name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <p>Title:</p>
         <input
@@ -39,6 +37,7 @@ export const Newpost = () => {
           className="post-title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <p>Content:</p>
         <textarea
@@ -47,6 +46,7 @@ export const Newpost = () => {
           className="post-body"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          required
         ></textarea>
         <button className="post-btn" onClick={handleSubmit}>
           Submit
