@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Roboto:wght@300;400;500;700;900&display=swap');
 
+:root {
+  --chelsea-font: 'Chelsea Market', cursive;
+  --roboto-font: 'Roboto', sans-serif;
+}
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +24,7 @@ body {
 }
 
 .nav-title h1 {
-  font-family: 'Chelsea Market', cursive;
+  font-family: var(--chelsea-font);
   font-size: 2.8rem;
   font-weight: 400;
 }
@@ -33,7 +37,7 @@ body {
   text-decoration: none;
   margin-left: 50px;
   color: #000;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--roboto-font);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -56,7 +60,7 @@ body {
 }
 
 .blog-header h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--roboto-font);
   color: lightblue;
   margin-bottom: 10px;
 }
@@ -79,7 +83,7 @@ body {
 }
 
 .post-container h3 {
-  font-family: 'Chelsea Market', cursive;
+  font-family: var(--chelsea-font);
   font-weight: 400;
   margin-bottom: 10px;
   color: tomato;
@@ -106,7 +110,7 @@ textarea:hover {
 
 .post-container .post-btn {
   font-size: 1.2rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--roboto-font);
   background-color: lightblue;
   color: tomato;
   border: 1px solid lightblue;

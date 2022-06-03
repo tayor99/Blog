@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import data from '../data';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export const Home = ({ setCurrentPost }) => {
   const [blogs, setBlogs] = useState(data);
+
+  // useEffect(() => {
+  //   const blogPost = async () => {
+  //     const { data } = await axios.get('https://blogpostapi1.herokuapp.com/');
+  //     setBlogs(data.data);
+  //   };
+  //   blogPost();
+  // }, []);
 
   const handleClick = (id) => {
     setCurrentPost(id);
@@ -11,7 +20,7 @@ export const Home = ({ setCurrentPost }) => {
 
   const allPost = blogs.map((blog) => {
     const posts = blog.post.split(' ');
-    const splitedPost = posts.slice(0, 50);
+    const splitedPost = posts.substr(0, 50);
     return (
       <div className="blog-container" key={blog.id}>
         <div className="blog-header">
