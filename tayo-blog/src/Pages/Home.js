@@ -1,26 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import data from '../data';
-import { Link } from 'react-router-dom';
+import Comments from '../Components/Comments';
 import axios from 'axios';
 
-export const Home = ({ setCurrentPost }) => {
+export const Home = () => {
   const [blogs, setBlogs] = useState([]);
+
+  const [selectPost, setSelectPost] = useState('');
+
+  const handleClick = (id) => {
+    // setIsCommentOpen(!isCommentOpen);
+    setSelectPost(id);
+  };
+
+  console.log(selectPost);
 
   useEffect(() => {
     const blogPost = async () => {
-      const { data } = await axios.get('https://blogpostapi1.herokuapp.com/');
-      setBlogs(data.data);
+      try {
+        const { data } = await axios.get('https://blogpostapi1.herokuapp.com/');
+        setBlogs(data.data);
+      } catch (e) {
+        console.log(e);
+      }
     };
+
     blogPost();
   }, []);
 
-  const handleClick = (id) => {
-    setCurrentPost(id);
-  };
+  // const deleteBtn = (id) => {
+  //   axios.delete(`https://blogpostapi1.herokuapp.com/${id}`);
+  // };
 
   const allPost = blogs.map((blog) => {
-    const posts = blog.content.split(' ');
-    const splitedPost = posts.slice(0, 50);
     return (
       <div className="blog-container" key={blog.id}>
         <div className="blog-header">
@@ -28,16 +39,18 @@ export const Home = ({ setCurrentPost }) => {
           <p>Written by {blog.name}</p>
         </div>
         <div className="blog-body">
-          <p>
-            {splitedPost.join(' ')}.....
-            <Link
-              to="/comments"
-              className="read-more"
-              onClick={() => handleClick(blog.id)}
-            >
-              Read more
-            </Link>
-          </p>
+          <p>{blog.content}</p>
+        </div>
+        {/* <button onClick={() => deleteBtn(blog.id)}>X</button> */}
+        <button className="comment-btn" onClick={() => handleClick(blog.id)}>
+          view comments
+        </button>
+        <div
+          className={`comment ${
+            selectPost === blog.id ? 'active' : 'not-active'
+          } `}
+        >
+          <Comments blog={blog} />
         </div>
       </div>
     );

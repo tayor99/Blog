@@ -119,10 +119,44 @@ textarea:hover {
   border: 4px;
   margin-bottom: 10px;
 }
+.blog-container .comment-btn {
+  padding: 10px 50px;
+  color: lightblue;
+  background-color: tomato;
+  cursor: pointer;
+}
+.blog-container .not-active {
+  display: none;
+}
+.blog-container .active {
+  display: block;
+}
 
 .post-container .post-btn:hover {
   color: lightblue;
   background-color: tomato;
   border: 1px solid tomato;
   cursor: pointer;
+}
+.comment-container .comments-header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: var(--chelsea-font);
+  color: lightblue;
+}
+
+.comment-container .comment-content {
+  font-family: var(--chelsea-font);
+  margin-bottom: 12px;
+}
+
+.comment-container textarea {
+  padding: 20px;
+  width: 100%;
+}
+
+button.post-btn {
+  padding: 10px 40px;
+  background-color: tomato;
+  color: aqua;
 }

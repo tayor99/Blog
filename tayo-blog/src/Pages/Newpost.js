@@ -2,24 +2,35 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export const Newpost = () => {
-  const [name, setName] = useState('');
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [details, setDetails] = useState({
+    name: '',
+    title: '',
+    content: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios.post(
-      'https://blogpostapi1.herokuapp.com/',
-
-      {
-        name,
-        title,
-        content,
-      }
-    );
+  const set = (name) => {
+    return ({ target: { value } }) => {
+      setDetails((oldValues) => ({ ...oldValues, [name]: value }));
+    };
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('https://blogpostapi1.herokuapp.com/', {
+        name: details.name,
+        title: details.title,
+        content: details.content,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    setDetails({
+      name: '',
+      title: '',
+      content: '',
+    });
+  };
   return (
     <div className="post-container">
       <form onSubmit={handleSubmit}>
@@ -27,16 +38,16 @@ export const Newpost = () => {
         <input
           type="text"
           className="post-name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={details.name}
+          onChange={set('name')}
           required
         />
         <p>Title:</p>
         <input
           type="text"
           className="post-title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={details.title}
+          onChange={set('title')}
           required
         />
         <p>Content:</p>
@@ -44,10 +55,11 @@ export const Newpost = () => {
           cols="30"
           rows="10"
           className="post-body"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={details.content}
+          onChange={set('content')}
           required
         ></textarea>
+
         <button className="post-btn" onClick={handleSubmit}>
           Submit
         </button>

@@ -16,9 +16,6 @@ const Header = () => {
         <Link to="/new-post" className="nav-links">
           New Post
         </Link>
-        {/* <Link to="/about" className="nav-links">
-          About
-        </Link> */}
       </nav>
     </div>
   );
