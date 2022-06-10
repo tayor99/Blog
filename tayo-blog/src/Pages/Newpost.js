@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { APIURL } from '../url';
 export const Newpost = () => {
   const [details, setDetails] = useState({
     name: '',
@@ -17,7 +17,7 @@ export const Newpost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://blogpostapi1.herokuapp.com/', {
+      await axios.post(APIURL + '/', {
         name: details.name,
         title: details.title,
         content: details.content,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Comments from '../Components/Comments';
 import axios from 'axios';
+import { APIURL } from '../url';
 
 export const Home = () => {
   const [blogs, setBlogs] = useState([]);
@@ -8,7 +9,6 @@ export const Home = () => {
   const [selectPost, setSelectPost] = useState('');
 
   const handleClick = (id) => {
-    // setIsCommentOpen(!isCommentOpen);
     setSelectPost(id);
   };
 
@@ -17,7 +17,7 @@ export const Home = () => {
   useEffect(() => {
     const blogPost = async () => {
       try {
-        const { data } = await axios.get('https://blogpostapi1.herokuapp.com/');
+        const { data } = await axios.get(APIURL);
         setBlogs(data.data);
       } catch (e) {
         console.log(e);
@@ -41,7 +41,6 @@ export const Home = () => {
         <div className="blog-body">
           <p>{blog.content}</p>
         </div>
-        {/* <button onClick={() => deleteBtn(blog.id)}>X</button> */}
         <button className="comment-btn" onClick={() => handleClick(blog.id)}>
           view comments
         </button>
